@@ -1,0 +1,8 @@
+,index,Latitude,LatitudeDir,Longitude,LongitudeDir,Altitude,Category
+index,1.0,-0.16747251303753163,,0.8796792823151605,,,
+Latitude,-0.16747251303753163,1.0,,-0.060810816923382666,,,
+LatitudeDir,,,,,,,
+Longitude,0.8796792823151605,-0.060810816923382666,,1.0,,,
+LongitudeDir,,,,,,,
+Altitude,,,,,,,
+Category,,,,,,,

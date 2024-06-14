@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np 
 from sklearn.linear_model import LinearRegression
 from __import import Import
+from scipy.stats import pearsonr
 
 imp_obj = Import()
 dataset = imp_obj.import_data()
@@ -10,7 +11,7 @@ dataset = imp_obj.import_data()
 class DescriptiveStatistics:
     def __init__(self,category=1):
         self.label = category
-        self.df = dataset[(dataset.Label==category)]
+        self.df = dataset[(dataset.Category==category)]
         self.feature_list = self.df.columns[:-1]
         
     def __info(self,feature:str='descr'):
@@ -81,29 +82,25 @@ class Bivariate(DescriptiveStatistics):
     
     def __cov(self):
         self.cov = self.df.cov(numeric_only=True)
-        self.cov.to_csv(r'output\cov.csv')
+        #print(self.df.corrwith(self.df['Label']))
+        self.cov.to_csv(rf'output\cov{self.label}.csv')
     
     def __corr(self):
         self.corr = self.df.corr(numeric_only=True)
-        self.corr.to_csv(r'output\corr.csv')
+        self.corr.to_csv(rf'output\corr{self.label}.csv')
     
-    def __regr(self):
-        self.regr = LinearRegression()
-        y = self.df.Label
-        self.regr_outcome = {output_feature:{'Coeff':None, 'Intercept':None} for output_feature in self.feature_list}
-        for feature in self.feature_list:
-            try:
-                X = pd.DataFrame(self.df[feature])
-                self.regr.fit(X,y)
-                self.regr_outcome[feature]['Coeff'] = self.regr.coef_
-                self.regr_outcome[feature]['Intercept'] = self.regr.intercept_
-            except:
-                print('Some non numeric Features have been excluded')
-        pd.DataFrame.from_dict(self.regr_outcome,orient='index').to_csv(r'output\regression_params.csv')
+    
+
+        
+    def public(self):
+        self.__cov()
+        self.__corr()
     
     
 def main():
-    DS = Univariate(0)
+    DS = Univariate(1)
+    DS.public()
+    DS = Bivariate(1)
     DS.public()
     
     
