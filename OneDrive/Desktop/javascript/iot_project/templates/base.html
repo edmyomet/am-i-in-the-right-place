@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        {% if title %}
+            <title>{{ title }}</title>
+        {% else %}
+        <title>Arduino Based GPS Tracker with NEO6m Module</title>
+        {% endif %}       
+        <meta name="author" content="shruthi">
+        <meta name="description" content="simple html form">
+        <meta name="keywords" content="html,form,css,clientside">
+
+        <link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+    </head>
+    <body>
+        {% block content %}
+        {% endblock content %}
+    </body>
+</html>
