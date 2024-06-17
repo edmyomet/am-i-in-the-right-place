@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import LabelEncoder
+from sklearn.preprocessing import StandardScaler
 from __import import Import
 
 import_obj = Import()
@@ -23,13 +24,15 @@ class Encoder:
         dataset.loc[dataset[colname] == 'W', colname] = 4
         print(dataset)
         dataset.drop(['index'],inplace=True)
-            
+    
+    
     
     def encode_label(self):
         self.__encode_label()
         self.__encode_column()
         self.__encode_column('LongitudeDir')
         dataset.to_csv(r'.\datasets\gps_sensor_data_new.csv')
+        
         
 
 if __name__ == '__main__':

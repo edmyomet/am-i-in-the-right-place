@@ -27,6 +27,7 @@ class GPSSerial:
                     data = file.readline()
                     data = pynmea2.parse(data)
                     if isinstance(data, pynmea2.types.talker.GGA):
+                        print(repr(data))
                         self.data_list['latitude'] = data.latitude
                         self.data_list['lat_dir'] = data.lat_dir
                         self.data_list['longitude'] = data.longitude
